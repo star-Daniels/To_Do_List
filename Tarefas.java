@@ -51,6 +51,7 @@ public class Tarefas {
         Scanner scan = new Scanner(System.in);
          try {
             FileWriter escrever = new FileWriter("tarefas.txt", true); 
+            System.out.println("Escreva a nova tarefa");
             String tarefa = scan.nextLine();
             escrever.write(tarefa + "\n");
             System.out.println("Tarefas salvas com sucesso!");
