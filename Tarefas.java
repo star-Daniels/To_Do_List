@@ -12,7 +12,7 @@ public class Tarefas {
         while (cond) {
             Scanner scanner = new Scanner(System.in);
             
-            System.out.println("Oque DeseJa Fazer\n"
+            System.out.println("Oque DeseJa Fazer\n\n"
             +"1- Adicionar tarefa\n"
             +"2- Marcar como concluida\n"
             +"3- Listar tarefas\n"
@@ -48,17 +48,23 @@ public class Tarefas {
     
     
     private static void nova_tarefa(){
-        Scanner scan = new Scanner(System.in);
+        
          try {
+            
+            Scanner scan = new Scanner(System.in);
             FileWriter escrever = new FileWriter("tarefas.txt", true); 
             System.out.println("Escreva a nova tarefa");
             String tarefa = scan.nextLine();
+            
             escrever.write(tarefa + "\n");
-            System.out.println("Tarefas salvas com sucesso!");
+            escrever.close();
+            System.out.println("\nTarefas salvas com sucesso!\n");
+            
         } catch (IOException e) {
-            System.out.println("Erro ao escrever no arquivo: " + e.getMessage());
+            System.out.println("Erro ao escrever no arquivo: " );
         }
-        scan.close();
+        
+        
 
     }
 
