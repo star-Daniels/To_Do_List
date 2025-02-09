@@ -18,7 +18,8 @@ public class Tarefas {
             +"|1- Adicionar tarefa--------|\n"
             +"|2- Marcar como concluida---|\n"
             +"|3- Listar tarefas----------|\n"
-            +"|4- Finalizar sessão--------|\n");
+            +"|4- Finalizar sessão--------|\n"
+            +"|5- Apagar todas as tarefas-|");
 
             int escolha = scanner.nextInt();
             scanner.nextLine();//consome a quebra de linha para não dar problema
@@ -38,6 +39,19 @@ public class Tarefas {
                     System.out.println("----Sessão finalizada----");
                     cond = false;
 
+                    break;
+                case 5:
+                    System.out.println("\nVocê tem certeza que deseja apagar TUDO?\n"
+                    +"|1- SIM|\n"
+                    +"|2- NÃO|");
+                    int esc = scanner.nextInt();
+                    if (esc == 1) {
+
+                        apagar_tarefas();   
+                    } else{
+                        System.out.println("\n\n<----As tarefas não foram apagadas!---->\n\n");
+                    }
+                    
                     break;
                 default:
                     System.out.println("<----Opção invalida---->");
@@ -69,6 +83,25 @@ public class Tarefas {
         
 
     }
+
+    private static void apagar_tarefas(){
+        
+        try {
+           
+           Scanner scan = new Scanner(System.in);
+           FileWriter escrever = new FileWriter("tarefas.txt", false); 
+           
+           
+           
+           escrever.write(" \n");
+           escrever.close();
+           System.out.println("\n<----Tarefas excluidas com sucesso!---->");
+           
+       } catch (IOException e) {
+           System.out.println("<----Erro ao Apagar---->" );
+       }
+    }
+
 
     private static void listar_tarefas(){
         
