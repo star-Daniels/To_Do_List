@@ -1,5 +1,7 @@
 package Gerenciador_de_Tarefas;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Tarefas {
@@ -21,7 +23,7 @@ public class Tarefas {
 
             switch (escolha) {
                 case 1:
-                    
+                    nova_tarefa();
                     break;
                 
                 case 2:
@@ -42,5 +44,21 @@ public class Tarefas {
 
             
         }
-    }    
+    }  
+    
+    
+    private static void nova_tarefa(){
+        Scanner scan = new Scanner(System.in);
+         try {
+            FileWriter escrever = new FileWriter("tarefas.txt", true); 
+            String tarefa = scan.nextLine();
+            escrever.write(tarefa + "\n");
+            System.out.println("Tarefas salvas com sucesso!");
+        } catch (IOException e) {
+            System.out.println("Erro ao escrever no arquivo: " + e.getMessage());
+        }
+        scan.close();
+
+    }
+
 }
